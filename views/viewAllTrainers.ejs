@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    
+    <!-- Custom CSS -->
+    <style>
+        /* Custom styles */
+        body {
+            background: linear-gradient(to bottom, #1c2841, #273c5a, #2d4873, #31538b, #345da2);
+            color: #fff;
+            margin-top: 70px;
+        }
+        .navbar {
+            background-color: transparent !important;
+            transition: background-color 0.3s ease;
+            position: fixed;
+            width: 100%;
+            z-index: 1000; /* Ensure it's above other elements */
+        }
+        .navbar-toggler-icon,
+        .navbar-brand,
+        .nav-link {
+            color: #fff !important;
+        }
+        .navbar a.navbar-brand:hover,
+        .navbar a.nav-link:hover {
+            color: #fff !important;
+        }
+        .footer {
+            background-color: #000;
+            padding: 20px 0;
+            text-align: center;
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        #tableContainer {
+            max-width: 1000px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 120px auto 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            color: #000; 
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+        .update-button, .delete-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        .delete-button {
+            background-color: #dc3545;
+        }
+        .navbar-brand img {
+            height: 50px;
+        }
+        .nav-link {
+            padding: 10px 15px;
+        }
+      
+        button {
+          background-color: white;
+          color: black;
+          border: none;
+          padding: 8px 16px;
+          border-radius: 5px;
+          cursor: pointer;
+          margin-right: 5px;
+          transition: background-color 0.3s ease;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/adminhome">
+                <img src="https://cdn.glitch.global/053c29cd-dfdc-43c1-80f1-bb5086f7c78a/Panther.png?v=1714432585127" alt="Panther Training Club Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="adminhome">Home&ensp;&ensp;</a>
+                    </li>
+                    <li class="nav-item active">
+                        <button  onclick="logout()">Logout</button>
+                    </li>
+                    
+                  
+                </ul>
+            </div>
+            
+        </div>
+    </nav>
+
+    <!-- Container for displaying table -->
+    <div id="tableContainer">
+        <h1 style="color:black;" class="text mb-4">Admin View</h1>
+        <h2 style="color:black;" class="text mb-4">Trainer Details</h2>
+        <table></table>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchDataAndDisplay('https://panther-training-club.glitch.me/api/admin/trainers');
+        });
+
+        function fetchDataAndDisplay(endpoint) {
+            fetch(endpoint, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('adminToken')}` 
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Display data in HTML table
+                displayData(data["trainers"]);
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function displayData(data) {
+            // Get the container element where you want to display the table
+            const container = document.getElementById('tableContainer').querySelector('table');
+
+            // Create table header
+            const tableHeader = document.createElement('thead');
+            const headerRow = document.createElement('tr');
+            const headers = ['Name', 'Email', 'Phone Number', 'Age', 'Gender', 'Specializations', 'Actions'];
+            headers.forEach(headerText => {
+                const headerCell = document.createElement('th');
+                headerCell.textContent = headerText;
+                headerRow.appendChild(headerCell);
+            });
+            tableHeader.appendChild(headerRow);
+            container.appendChild(tableHeader);
+
+            // Create table body
+            const tableBody = document.createElement('tbody');
+            data.forEach(trainer => {
+                const row = document.createElement('tr');
+                const nameCell = document.createElement('td');
+                nameCell.textContent = trainer.name;
+                const emailCell = document.createElement('td');
+                emailCell.textContent = trainer.email;
+                const phoneCell = document.createElement('td');
+                phoneCell.textContent = trainer.phoneNo;
+                const ageCell = document.createElement('td');
+                ageCell.textContent = trainer.age;
+                const genderCell = document.createElement('td');
+                genderCell.textContent = trainer.gender;
+                const specializationsCell = document.createElement('td');
+                specializationsCell.textContent = trainer.specializations;
+                const actionsCell = document.createElement('td');
+                const deleteButton = document.createElement('button');
+                deleteButton.classList.add('delete-button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.addEventListener('click', function() {
+                    if (confirm('Are you sure you want to delete this trainer?')) {
+                        deleteTrainer(trainer._id, row); 
+                    }
+                });
+                actionsCell.appendChild(deleteButton);
+                row.appendChild(nameCell);
+                row.appendChild(emailCell);
+                row.appendChild(phoneCell);
+                row.appendChild(ageCell);
+                row.appendChild(genderCell);
+                row.appendChild(specializationsCell);
+                row.appendChild(actionsCell);
+                tableBody.appendChild(row);
+            });
+            container.appendChild(tableBody);
+        }
+        
+        function deleteTrainer(id, row) {
+            console.log('Deleting Trainer with ID:', id);
+            console.log('Row:', row);
+
+            fetch(`https://panther-training-club.glitch.me/api/admin/trainers/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('adminToken')}`,
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    row.remove();
+                    console.log('Row removed from UI');
+                    return response.json();
+                } else {
+                    console.error('Failed to delete trainer:', response);
+                    throw new Error('Network response was not ok.');
+                }
+            })
+            .then(data => {
+                console.log('Delete Success:', data);
+                alert('Trainer deleted successfully.');
+                location.reload();
+            })
+            .catch(error => {
+                alert('Trainer deleted successfully.');
+                window.location.reload();
+            });
+        }
+      
+        function logout() {
+            localStorage.removeItem('trainertoken');
+            localStorage.removeItem('trainerId');
+            window.location.href = '/index';
+        }
+    </script>
+
+    
+
+    <!-- Bootstrap and jQuery Scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shCk5KVw8+z7u4Ique6zr8Xm41u6zFJvaTIxX" crossorigin="anonymous"></script>
+</body>
+</html>

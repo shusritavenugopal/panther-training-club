@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Panther Training Club - Member Login</title>
+    <meta name="description" content="A cool thing made with Glitch">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        /* Custom styles */
+        body {
+            background: linear-gradient(to bottom, #1c2841, #273c5a, #2d4873, #31538b, #345da2);
+            color: #fff;
+            margin-top: 70px; /* Adjust for navbar height */
+        }
+        .navbar {
+            background-color: transparent !important;
+            transition: background-color 0.3s ease;
+            position: fixed;
+            width: 100%;
+            z-index: 1000; /* Ensure it's above other elements */
+        }
+        .navbar-toggler-icon,
+        .navbar-brand,
+        .nav-link {
+            color: #fff !important;
+        }
+        .navbar a.navbar-brand:hover,
+        .navbar a.nav-link:hover {
+            color: #fff !important;
+        }
+        .footer {
+            background-color: #000;
+            padding: 20px 0;
+            text-align: center;
+            color: #fff;
+        }
+        .login-container {
+            margin-top: 100px;
+        }
+        .login-box {
+            background-color: #fff;
+            border: 2px solid #000;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .login-box-logo {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .login-box-logo h1 {
+            color: #000;
+            font-size: 24px;
+            margin-bottom: 0;
+        }
+        .login-box input[type="email"],
+        .login-box input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            color: #000;
+            background-color: transparent;
+        }
+        .login-box button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+          
+            background-color: #00416a ;
+            color: white;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .register-link a {
+            color: #00416a;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="container">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/index">Panther Training Club</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <!-- Removed the "Are you a trainer?" and "Are you a member?" options -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <div class="row login-container">
+        <div class="col-md-6 mx-auto">
+            <div class="login-box">
+                <div class="login-box-logo">
+                    <img src="https://cdn.glitch.global/053c29cd-dfdc-43c1-80f1-bb5086f7c78a/Panther.png?v=1714432585127" height=100>
+                    <h1>Member Login</h1>
+                </div>
+              <br>
+                <form id="login">
+                  <label for="email" style="color:black;"><b>Email</b></label>
+                    <input type="email" name="email" id="email" placeholder="Your email" required>
+                  <label for="password" style="color:black;"><b>Password</b></label>
+                    <input type="password" name="password" id="password" placeholder="Your password" required>
+                    <button type="submit">Submit</button>
+                </form>
+                <div class="register-link">
+                    <p style="color:black;">Not registered yet? 
+                        <button style="background-color: #00416a; color:white;" onclick="redirectToPage('/membersignup')"> Register now</button>
+                  </p>
+                  
+           
+                  
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-5">
+        <div class="container">
+            <span>© 2024 Panther Training Club. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shCk5KVw8+z7u4Ique6zr8Xm41u6zFJvaTIxX" crossorigin="anonymous"></script>
+    <script src="memberlogin.js"></script>
+    <script>
+    function redirectToPage(path) {
+      window.location.href = path;
+    }
+  </script>  
+  </body>
+</html>

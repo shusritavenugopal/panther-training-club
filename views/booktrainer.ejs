@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Schedule Trainer</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            background-color: rgba(52, 93, 162, 0.8) !important; /* Slightly transparent */
+            transition: background-color 0.3s ease;
+            position: fixed;
+            width: 100%; /* Full width */
+            z-index: 1000; /* Ensure it's above other elements */
+            padding: 10px 0;
+        }
+        .navbar-brand img {
+            height: 50px; /* Adjust logo size */
+        }
+        .nav-link {
+            color: #fff !important;
+        }
+        .container {
+            margin-top: 70px; /* Adjust for navbar height */
+        }
+        .form-container, .additional-content {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+        .additional-content {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .additional-content img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .additional-content p {
+            color: #333;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-top: 10px; /* Adjusted margin */
+            margin-bottom: 10px; /* Adjusted margin */
+        }
+        .additional-content ul {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 20px;
+            margin-top: 0; /* Adjusted margin */
+            text-align: left; /* Align bullet points to the left */
+        }
+        .additional-content ul li {
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 5px;
+        }
+        .additional-content ul li::before {
+            content: "\2022";
+            position: absolute;
+            left: 0;
+            color: #345da2;
+        }
+        .form-container h2, .additional-content h2 {
+            color: #345da2;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+        }
+        select,
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+            resize: vertical;
+        }
+        button[type="submit"] {
+            background-color: #345da2;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #2c4d8e;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/memberhome">
+            <img src="https://cdn.glitch.global/053c29cd-dfdc-43c1-80f1-bb5086f7c78a/Panther.png?v=1714432585127" alt="Panther Training Club Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/memberhome">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Trainer Details</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        More
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="memberprofile">View/Update Profile</a>
+                        <a class="dropdown-item" onclick="logout()">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Main content -->
+  
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-container">
+                <h2>Book your Trainer</h2>
+                <form id="scheduleTrainerForm">
+                    <div class="form-group">
+                        <label for="goal">Goal:</label>
+                        <input type="text" class="form-control" id="goal" name="goal">
+                    </div>
+                    <div class="form-group">
+                        <label for="preferredWorkout">Preferred Workout:</label>
+                        <input type="text" class="form-control" id="preferredWorkout" name="preferredWorkout">
+                    </div>
+                    <div class="form-group">
+                        <label for="foodPreferences">Food Preferences:</label>
+                        <select id="foodPreferences" class="form-control" name="foodPreferences">
+                            <option value="vegan">Vegan</option>
+                            <option value="non-vegetarian">Non-vegetarian</option>
+                            <option value="eggetarian">Eggetarian</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="medicalHistory">Medical History, Allergies:</label>
+                        <textarea class="form-control" id="medicalHistory" name="medicalHistory" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="additionalMessage">Additional Message:</label>
+                        <textarea class="form-control" id="additionalMessage" name="additionalMessage" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+              
+              
+              
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="additional-content">
+                <h2>Why Book a Trainer?</h2>
+                <img src="https://cdn.glitch.global/053c29cd-dfdc-43c1-80f1-bb5086f7c78a/booktrainer%20img1.jpg?v=1714486687589" alt="Book Trainer" class="img-fluid mt-3">
+                <ul>
+                    <li>Customized workout plans</li>
+                    <li>Expert guidance</li>
+                    <li>Accountability</li>
+                    <li>Effective results</li>
+                    <li>Expert advice on nutrition</li>
+                </ul>
+                <p>Book your trainer today for a healthier tomorrow!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="booktrainer.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    function logout() {
+        localStorage.removeItem('membertoken');
+        localStorage.removeItem('memberId');
+        window.location.href = '/index';
+    }
+</script>
+</body>
+</html>

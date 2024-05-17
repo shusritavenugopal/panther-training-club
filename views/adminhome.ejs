@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Panther Training Club</title>
+    <meta name="description" content="A cool thing made with Glitch">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        /* Custom styles */
+        body {
+            background: linear-gradient(to bottom, #1c2841, #273c5a, #2d4873, #31538b, #345da2);
+            color: #fff;
+            margin-top: 70px; 
+        }
+        .navbar {
+            background-color: transparent !important;
+            transition: background-color 0.3s ease;
+            position: fixed;
+            width: 100%;
+            z-index: 1000; 
+            padding: 10px 0;
+        }
+        .navbar-brand img {
+            height: 50px; 
+        }
+        .navbar-toggler-icon,
+        .navbar-brand,
+        .nav-link {
+            color: #fff !important;
+        }
+        .navbar a.navbar-brand:hover,
+        .navbar a.nav-link:hover {
+            color: #ddd !important; 
+        }
+        .dropdown-menu {
+            background-color: #345da2 !important;
+            border: none; 
+        }
+        .dropdown-menu a {
+            color: #fff !important;
+            transition: background-color 0.3s ease; 
+        }
+        .dropdown-menu a:hover {
+            background-color: #2c4d8e !important; 
+        }
+        .footer {
+            background-color: #000;
+            padding: 20px 0;
+            text-align: center;
+            color: #fff;
+        }
+        .content-section {
+            padding: 50px 0;
+        }
+        .content-section h2 {
+            color: #fff;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .content-section p {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        
+        .content-section .info-card {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .content-section .info-card h3 {
+            color: #000;
+            margin-bottom: 10px;
+        }
+        .content-section .info-card p {
+            color: #000;
+        }
+        .content-section .info-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        /* Adjust dropdown menu alignment */
+        .dropdown-menu {
+            left: auto !important;
+            right: 0;
+        }
+
+        /* Additional styles for the booking section */
+        .box-container {
+            background-color: black;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 800px;
+           
+        }
+        .box-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .box-content h3 {
+            color: #000;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .box-content button {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="container">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="adminhome">
+                <img src="https://cdn.glitch.global/053c29cd-dfdc-43c1-80f1-bb5086f7c78a/Panther.png?v=1714432585127" alt="Panther Training Club Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="adminhome">Home</a>
+                    </li>
+                   <li class="nav-item active">
+                          
+                       <a style="background-color: white;" class="dropdown-item"><button class="dropdown-item" onclick="logout()">Logout</button></a>
+                       
+                    </li>
+                    
+                    
+                     
+                       
+                         
+                            
+                        
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    
+          <!-- Booking Trainer -->
+            <div class="row mt-5">
+                <div class="col-md-8 mx-auto">
+                    <div class="box-container" style="height: 300px;"> <!-- Adjust the height as needed -->
+                        <div class="row">
+                            <!-- Side with image and message -->
+                            <div class="col-md-6">
+                                <div class="box-content">
+                                    <img src="https://cdn.glitch.global/053c29cd-dfdc-43c1-80f1-bb5086f7c78a/pilates%20member%20home%20page.jpg?v=1714461134429" alt="Pilates Image" class="img-fluid">
+                                </div>
+                            </div>
+                            <!-- Side with button -->
+                            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                                <div class="text-center">
+                                    <h2>Panther Training Club</h2>
+                                    <h2>Admin Page</h2>
+                                  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+          <!-- Main content -->
+<div class="content-section">
+    <div class="container">
+        <h2>Admin Priviledges</h2>
+        <div class="row justify-content-center">
+            <a href="viewAllMembers" style="color: white; text-decoration: none; font-weight: bold; background-color: #007bff; border: none; border-radius: 5px; padding: 10px 20px; margin-right: 10px;">View All Members</a>
+            <a href="viewAllTrainers" style="color: white; text-decoration: none; font-weight: bold; background-color: #007bff; border: none; border-radius: 5px; padding: 10px 20px;">View All Trainers</a>
+        </div>
+    </div>
+</div>
+
+
+
+            
+
+            <div class="row mt-5">
+                <div class="col-md-6">
+                    <img src="https://cdn.glitch.global/053c29cd-dfdc-43c1-80f1-bb5086f7c78a/member%20home%20page%204.png?v=1714459461578" alt="Fitness Image 1" class="img-fluid mb-3">
+                </div>
+                <div class="col-md-6">
+                    <img src="https://cdn.glitch.global/053c29cd-dfdc-43c1-80f1-bb5086f7c78a/memebr%20home%20page%206.png?v=1714459694901" alt="Fitness Image 2" class="img-fluid mb-3">
+                    <img src="https://cdn.glitch.global/053c29cd-dfdc-43c1-80f1-bb5086f7c78a/member%20home%20page%205.png?v=1714459465727" alt="Fitness Image 3" class="img-fluid mb-3">
+                </div>
+            </div>     
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-5">
+        <div class="container">
+            <span>© 2024 Panther Training Club. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Initialize Bootstrap dropdown
+        document.addEventListener("DOMContentLoaded", function() {
+            var dropdownMenu = document.querySelectorAll('.dropdown-toggle');
+            dropdownMenu.forEach(function(dropdown) {
+                dropdown.addEventListener('click', function() {
+                    var dropdownParent = this.parentElement;
+                    var isActive = dropdownParent.classList.contains('show');
+                    if (!isActive) {
+                        // Hide other dropdowns
+                        var dropdowns = document.querySelectorAll('.dropdown');
+                        dropdowns.forEach(function(item) {
+                            if (item !== dropdownParent) {
+                                item.classList.remove('show');
+                            }
+                        });
+                    }
+                });
+            });
+        });
+      
+        function logout() {
+            localStorage.removeItem('admintoken');
+            localStorage.removeItem('adminId');
+            window.location.href = '/index';
+        }
+      
+    </script>
+</body>
+</html>

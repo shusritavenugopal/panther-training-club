@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Panther Training Club</title>
+    <meta name="description" content="A cool thing made with Glitch">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        /* Custom styles */
+        body {
+            background: linear-gradient(to bottom, #1c2841, #273c5a, #2d4873, #31538b, #345da2);
+            color: #fff;
+            margin-top: 70px; /* Adjust for navbar height */
+        }
+        .navbar {
+            background-color: transparent !important;
+            transition: background-color 0.3s ease;
+            position: fixed;
+            width: 100%;
+            z-index: 1000; /* Ensure it's above other elements */
+        }
+        .navbar-toggler-icon,
+        .navbar-brand,
+        .nav-link {
+            color: #fff !important;
+            
+        }
+        .navbar a.navbar-brand:hover,
+        .navbar a.nav-link:hover {
+            color: #fff !important;
+        }
+        .footer {
+            background-color: #000;
+            padding: 20px 0;
+            text-align: center;
+            color: #fff;
+        }
+        .feature-box {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .feature-box h3 {
+            color: #000;
+        }
+        .feature-box p {
+            color: #000;
+        }
+        .feature-box ul li {
+            color: #000;
+        }
+        .feature-box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body class="container">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index">
+                <img src="https://cdn.glitch.global/053c29cd-dfdc-43c1-80f1-bb5086f7c78a/Panther.png?v=1714432585127" alt="Panther Training Club Logo" height="80">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+          
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <!-- Removed the "Are you a trainer?" and "Are you a member?" options -->
+                  <button class="btn btn-primary btn-lg mr-6" onclick="redirectToPage('/adminlogin')" type="submit"> Login as Admin </button>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <div class="row mt-5">
+        <div class="col-md-8 mx-auto text-center">
+            <h1 class="display-4">Achieve Your Fitness Goals with Panther Training Club</h1>
+          <p class="lead">Join us and start your fitness journey today!</p>
+            <button class="btn btn-primary btn-lg mr-3" onclick="redirectToPage('/trainerlogin')" type="submit"> Are you a Trainer? </button>
+            <button class="btn btn-primary btn-lg mr-3" onclick="redirectToPage('/memberlogin')" type="submit"> Are you a member? </button>
+        </div>
+    </div>
+<!--     <button class="btn btn-primary btn-lg mr-3" onclick="redirectToPage('/trainerprofile')" type="submit"> trainer profile </button> -->
+    
+
+    <!-- Featured content -->
+    <div class="row mt-5">
+        <div class="col-md-8 mx-auto">
+            <div class="feature-box">
+                <h3>Expert Training Programs</h3>
+                <img src="https://cdn.glitch.global/053c29cd-dfdc-43c1-80f1-bb5086f7c78a/index%20page%20image%201.jpg?v=1714458292381" alt="Training Programs" class="img-fluid mb-3">
+                <p>Our team of experienced trainers will create personalized workout plans tailored to your fitness goals.</p>
+                <p>Whether you're looking to lose weight, build muscle, or improve your overall health, we've got you covered!</p>
+            </div>
+            <div class="feature-box">
+                <h3>Nutrition Guidance</h3>
+                <img src="https://cdn.glitch.global/053c29cd-dfdc-43c1-80f1-bb5086f7c78a/index%20page%20image%202.jpg?v=1714429572863" alt="Nutrition Guidance" class="img-fluid mb-3">
+                <p>Proper nutrition is key to achieving your fitness goals. Our nutritionists will provide expert guidance to help you fuel your body for success.</p>
+                <p>With personalized meal plans and ongoing support, you'll learn how to make healthy choices that fit your lifestyle.</p>
+            </div>
+            <div class="feature-box">
+                <h3>Community Support</h3>
+                <img src="https://cdn.glitch.global/053c29cd-dfdc-43c1-80f1-bb5086f7c78a/index%20page%20image%203.webp?v=1714429759777" alt="Community Support" class="img-fluid mb-3">
+                <p>Join our community of like-minded individuals who are committed to living a healthy, active lifestyle.</p>
+                <p>Get motivated, stay accountable, and celebrate your successes with others on the same journey.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-5">
+        <div class="container">
+            <span>© 2024 Panther Training Club. All rights reserved.</span>
+        </div>
+    </footer>
+  
+  
+  
+  <!-- include the Glitch button to show what the webpage is about and
+to make it easier for folks to view source and remix -->
+  
+<!--     <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+    <script src="https://button.glitch.me/button.js"></script> -->
+
+   
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shCk5KVw8+z7u4Ique6zr8Xm41u6zFJvaTIxX" crossorigin="anonymous"></script>
+</body>
+<script>
+  function redirectToPage(url) {
+    window.location.href = url;
+  }
+</script>
+</html>
